@@ -1,7 +1,12 @@
+import axios from "axios";
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
+export const SMURF_FETCH = "SMURF_FETCH";
+export const PAPA_SMURF_WINS = "SMURF_FETCH_FAIL";
+export const GARGAMEL_WINS = "SMURF_FETCH_SUCCESS";
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -14,27 +19,26 @@
    D - deleteSmurf
 */
 
-export const GET_SMURF = "GET_SMURF"
-
-
-export function getSmurfs = {
-  type: 
-}
-
-export const addNewTask = "ADD_NEW_TASK";
-
-export function addTask(newTask) {
-  return {
-    type: addNewTask,
-    payload: newTask
-  };
-}
-
-export const markComplete = "TASK_COMPLETED";
-// mark is what's being passed - simply the item ID.  Just pass it along as the payload
-export function markCompleted(mark) {
-  return {
-    type: markComplete,
-    payload: mark
-  };
-}
+export const getSmurfs = () => dispatch => {
+  dispatch({
+    type: SMURF_FETCH
+  });
+  axios
+    .get("http://localhost:3333/smurfs")
+    .then(res => {
+      console.log("Successful Response message below"), 
+      console.log(res.data);
+      dispatch({
+        type: GARGAMEL_WINS,
+        payload: res.data
+      });
+    })
+    .catch(rej => {
+      console.log("Rejection message below"), 
+      console.log(rej);
+      dispatch({
+        type: PAPA_SMURF_WINS,
+        payload: rej.response
+      });
+    });
+};

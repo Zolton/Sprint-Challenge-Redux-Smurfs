@@ -1,3 +1,7 @@
+import { SMURF_FETCH } from "../actions";
+import { PAPA_SMURF_WINS } from "../actions";
+import { GARGAMEL_WINS } from "../actions";
+
 /*
   Be sure to import in all of the action types from `../actions`
 */
@@ -14,19 +18,38 @@
  }
 */
 
-initialState = {
+const initialState = {
   smurfs: [],
   error: "",
   fetchingSmurfs: false
-}
+};
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    
+    case SMURF_FETCH:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        error: ""
+      };
+    case PAPA_SMURF_WINS:
+      return {
+        ...state,
+        error: action.payload,
+        fetchingSmurfs: false
+      };
+    case GARGAMEL_WINS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        error: "",
+        smurfs: action.payload
+      };
 
-  default: return state
+    default:
+      return state;
   }
-}
+};
 
 /*
   You'll only need one smurf reducer for this project.
