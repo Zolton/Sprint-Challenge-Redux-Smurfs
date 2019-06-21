@@ -14,6 +14,20 @@
  }
 */
 
+initialState = {
+  smurfs: [],
+  error: "",
+  fetchingSmurfs: false
+}
+
+export const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    
+
+  default: return state
+  }
+}
+
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
