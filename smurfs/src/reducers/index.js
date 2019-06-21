@@ -1,6 +1,12 @@
-import { SMURF_FETCH } from "../actions";
-import { PAPA_SMURF_WINS } from "../actions";
-import { GARGAMEL_WINS } from "../actions";
+import {
+  SMURF_FETCH,
+  PAPA_SMURF_WINS,
+  GARGAMEL_WINS,
+  NEW_SMURF,
+  SMURF_SOUP
+} from "../actions";
+import {} from "../actions";
+import {} from "../actions";
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -45,7 +51,18 @@ export const reducer = (state = initialState, action) => {
         error: "",
         smurfs: action.payload
       };
-
+    case SMURF_SOUP:
+      return {
+        ...state,
+        error: action.payload,
+        fetchingSmurfs: false
+      };
+    case NEW_SMURF:
+      return {
+        ...state,
+        error: "",
+        smurfs: [...state, action.payload]
+      };
     default:
       return state;
   }
