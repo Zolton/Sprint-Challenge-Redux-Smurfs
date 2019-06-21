@@ -73,6 +73,7 @@ export const reducer = (state = initialState, action) => {
           return {
             ...state,
             error: "",
+            fetchingSmurfs: false,
             smurfs: [...state, action.payload]
           }
     default:

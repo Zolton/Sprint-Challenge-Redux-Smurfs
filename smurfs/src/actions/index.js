@@ -68,7 +68,7 @@ export const addSmurf = smurf => dispatch => {
 
 export const feedSmurfToAzrael = smurf => dispatch => {
   axios
-  .delete("http://localhost:3333/smurfs/${smurf}")
+  .delete(`http://localhost:3333/smurfs/${smurf}`)
   .then(res=>{
     console.log(res)
     dispatch({
