@@ -3,10 +3,10 @@ import {
   PAPA_SMURF_WINS,
   GARGAMEL_WINS,
   NEW_SMURF,
-  SMURF_SOUP
+  SMURF_SOUP,
+  DIE_ANOTHER_DAY,
+  CAT_FOOD
 } from "../actions";
-import {} from "../actions";
-import {} from "../actions";
 
 /*
   Be sure to import in all of the action types from `../actions`
@@ -63,6 +63,18 @@ export const reducer = (state = initialState, action) => {
         error: "",
         smurfs: [...state, action.payload]
       };
+      case DIE_ANOTHER_DAY:
+        return {
+          ...state,
+          error: action.payload,
+          fetchingSmurfs: false
+        }
+        case CAT_FOOD:
+          return {
+            ...state,
+            error: "",
+            smurfs: [...state, action.payload]
+          }
     default:
       return state;
   }
