@@ -63,19 +63,19 @@ export const reducer = (state = initialState, action) => {
         error: "",
         smurfs: [...state, action.payload]
       };
-      case DIE_ANOTHER_DAY:
-        return {
-          ...state,
-          error: action.payload,
-          fetchingSmurfs: false
-        }
-        case CAT_FOOD:
-          return {
-            ...state,
-            error: "",
-            fetchingSmurfs: false,
-            smurfs: [...state, action.payload]
-          }
+    case DIE_ANOTHER_DAY:
+      return {
+        ...state,
+        error: action.payload,
+        fetchingSmurfs: false
+      };
+    case CAT_FOOD:
+      return {
+        ...state,
+        error: "",
+        fetchingSmurfs: false,
+        smurfs: [...state, action.payload]
+      };
     default:
       return state;
   }

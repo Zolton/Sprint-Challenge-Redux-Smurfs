@@ -10,7 +10,7 @@ export const GARGAMEL_WINS = "SMURF_FETCH_SUCCESS";
 export const NEW_SMURF = "NEW_SMURF";
 export const SMURF_SOUP = "SMURF_SOUP";
 export const CAT_FOOD = "CAT_FOOD";
-export const DIE_ANOTHER_DAY = "DIE_ANOTHER_DAY"
+export const DIE_ANOTHER_DAY = "DIE_ANOTHER_DAY";
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -30,16 +30,14 @@ export const getSmurfs = () => dispatch => {
   axios
     .get("http://localhost:3333/smurfs")
     .then(res => {
-      console.log("Successful Response message below"), 
-      console.log(res.data);
+      console.log("Successful Response message below"), console.log(res.data);
       dispatch({
         type: GARGAMEL_WINS,
         payload: res.data
       });
     })
     .catch(rej => {
-      console.log("Rejection message below"), 
-      console.log(rej);
+      console.log("Rejection message below"), console.log(rej);
       dispatch({
         type: PAPA_SMURF_WINS,
         payload: rej.response
@@ -49,38 +47,38 @@ export const getSmurfs = () => dispatch => {
 
 export const addSmurf = smurf => dispatch => {
   axios
-  .post("http://localhost:3333/smurfs", smurf)
-  .then(res=>{
-    console.log(res)
-    dispatch({
-      type: NEW_SMURF,
-      payload: res.data
+    .post("http://localhost:3333/smurfs", smurf)
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: NEW_SMURF,
+        payload: res.data
+      });
     })
-  })
-  .catch (rej => {
-    console.log(rej)
-    dispatch({
-      type: SMURF_SOUP,
-      payload: rej.response
-    })
-  })
-}
+    .catch(rej => {
+      console.log(rej);
+      dispatch({
+        type: SMURF_SOUP,
+        payload: rej.response
+      });
+    });
+};
 
 export const feedSmurfToAzrael = smurf => dispatch => {
   axios
-  .delete(`http://localhost:3333/smurfs/${smurf}`)
-  .then(res=>{
-    console.log(res)
-    dispatch({
-      type: CAT_FOOD,
-      payload: res.data
+    .delete(`http://localhost:3333/smurfs/${smurf}`)
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: CAT_FOOD,
+        payload: res.data
+      });
     })
-  })
-  .catch (rej => {
-    console.log(rej)
-    dispatch({
-      type: DIE_ANOTHER_DAY,
-      payload: rej.response
-    })
-  })
-}
+    .catch(rej => {
+      console.log(rej);
+      dispatch({
+        type: DIE_ANOTHER_DAY,
+        payload: rej.response
+      });
+    });
+};
