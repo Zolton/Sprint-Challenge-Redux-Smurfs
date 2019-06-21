@@ -14,6 +14,7 @@ class App extends Component {
     name: "",
     age: "",
     height: "",
+    status: ""
   };
 
   componentDidMount() {
@@ -40,35 +41,44 @@ class App extends Component {
               <h4>Name: {smurf.name}</h4>
               <h4>Age: {smurf.age}</h4>
               <h4>Height: {smurf.height}</h4>
-              <button onClick = {()=>this.props.feedSmurfToAzrael(smurf.id)}>Click to feed the Smurf known as number {smurf.id} to Azrael</button>
-              
-            </div>)})}
+              <button onClick={() => this.props.feedSmurfToAzrael(smurf.id)}>
+                Click to feed the Smurf known as number {smurf.id} to Azrael
+              </button>
+            </div>
+          );
+        })}
         <form
           onSubmit={() => {
             this.props.addSmurf({ ...this.state });
           }}
-        ><p>
-          <input
-            type="text"
-            placeholder="Enter new Smurf name"
-            name="name"
-            value={this.state.name}
-            onChange={this.changeHandler}
-          /></p><p>
-          <input
-            type="text"
-            placeholder="Enter new Smurf age"
-            name="age"
-            value={this.state.age}
-            onChange={this.changeHandler}
-          /></p><p>
-          <input
-            type="text"
-            placeholder="Enter new Smurf height"
-            name="height"
-            value={this.state.height}
-            onChange={this.changeHandler}
-          /></p>
+        >
+          <p>
+            <input
+              type="text"
+              placeholder="Enter new Smurf name"
+              name="name"
+              value={this.state.name}
+              onChange={this.changeHandler}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              placeholder="Enter new Smurf age"
+              name="age"
+              value={this.state.age}
+              onChange={this.changeHandler}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              placeholder="Enter new Smurf height"
+              name="height"
+              value={this.state.height}
+              onChange={this.changeHandler}
+            />
+          </p>
           <button type="submit">Send new Smurf to Smurfville</button>
         </form>
       </div>
