@@ -26,13 +26,13 @@ class App extends Component {
       <div className="App">
         Hello from Smurfville
         {this.props.smurfs.map(smurf => {
-          return 
+          return (
           <div>
             <h4>Name: {smurf.name}</h4>
             <h4>Age: {smurf.age}</h4>
             <h4>Height: {smurf.height}</h4>
             <h4>ID: {smurf.id}</h4>
-          </div>;
+          </div>)
         })}
       </div>
     );
@@ -40,6 +40,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("this is state", state)
+
   return {
   smurfs: state.smurfs
   }
